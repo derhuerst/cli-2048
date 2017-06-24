@@ -1,0 +1,39 @@
+{
+	"preferGlobal": true,
+	"name": "cli-2048",
+	"description": "Play 2048 in the command line.",
+	"version": "0.1.0",
+	"bin": {
+		"2048": "./cli.js"
+	},
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"cli.js"
+	],
+	"keywords": [
+		"2048",
+		"game",
+		"1024",
+		"threes",
+		"cli"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/cli-2048",
+	"repository": "derhuerst/cli-2048",
+	"bugs": "https://github.com/derhuerst/cli-2048/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"tape": "^4.6.3",
+		"tap-min": "^1.2.1"
+	},
+	"scripts": {
+		"test": "node test.js | tap-min",
+		"prepublishOnly": "npm test"
+	}
+}
