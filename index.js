@@ -3,66 +3,23 @@
 const createBoard = require('@derhuerst/2048/src/Board')
 const esc = require('ansi-escapes')
 const ui = require('cli-styles')
-const style = require('ansi-styles')
 const wrap = require('prompt-skeleton')
 
 
 
-// const fg = []
-// fg[0] = 102
-// fg[2] = 102
-// fg[4] = 102
-// fg[8] = 231
-// fg[16] = 231
-// fg[32] = 231
-// fg[64] = 231
-// fg[128] = 231
-// fg[256] = 231
-// fg[512] = 231
-// fg[1024] = 231
-// fg[2048] = 231
-
-// const bg = []
-// bg[0] = 224
-// bg[2] = 224
-// bg[4] = 224
-// bg[8] = 216
-// bg[16] = 216
-// bg[32] = 210
-// bg[64] = 209
-// bg[128] = 222
-// bg[256] = 222
-// bg[512] = 222
-// bg[1024] = 221
-// bg[2048] = 221
-
-const fg = []
-fg[0] = '#776e65'
-fg[2] = '#776e65'
-fg[4] = '#776e65'
-fg[8] = '#f9f6f2'
-fg[16] = '#f9f6f2'
-fg[32] = '#f9f6f2'
-fg[64] = '#f9f6f2'
-fg[128] = '#f9f6f2'
-fg[256] = '#f9f6f2'
-fg[512] = '#f9f6f2'
-fg[1024] = '#f9f6f2'
-fg[2048] = '#f9f6f2'
-
 const bg = []
-bg[0] = '#eee4da'
-bg[2] = '#eee4da'
-bg[4] = '#eee1c9'
-bg[8] = '#f3b27a'
-bg[16] = '#f69664'
-bg[32] = '#f77c5f'
-bg[64] = '#f75f3b'
-bg[128] = '#edd073'
-bg[256] = '#edcc62'
-bg[512] = '#edc950'
-bg[1024] = '#edc53f'
-bg[2048] = '#edc22e'
+bg[0] = `\x1b[48;5;231m`
+bg[2] = `\x1b[48;5;229m`
+bg[4] = `\x1b[48;5;226m`
+bg[8] = `\x1b[48;5;220m`
+bg[16] = `\x1b[48;5;223m`
+bg[32] = `\x1b[48;5;214m`
+bg[64] = `\x1b[48;5;217m`
+bg[128] = `\x1b[48;5;208m`
+bg[256] = `\x1b[48;5;211m`
+bg[512] = `\x1b[48;5;205m`
+bg[1024] = `\x1b[48;5;202m`
+bg[2048] = `\x1b[48;5;196m`
 
 
 
@@ -119,7 +76,8 @@ const _2048 = {
 		const raw = this.board.getCells()
 
 		const board = []
-		const black = style.color.ansi256.black
+		const black = `\x1b[38;5;16m`
+		const reset = '\x1b[0m'
 
 		for (let y = 0; y < raw.length; y++) {
 			for (let x = 0; x < raw[y].length; x++) {
@@ -133,19 +91,17 @@ const _2048 = {
 					board[x * 2][y] = '    '
 					board[x * 2 + 1][y] = '    '
 				} else {
-					const fgc = style.color.ansi256.hex(fg[val])
-					const bgc = style.bgColor.ansi256.hex(bg[val])
-					const reset = style.color.close + style.bgColor.close
+					const bgc = bg[val]
 
 					board[x * 2][y] = [
-						fgc, bgc, ' ',
+						black, bgc, ' ',
 						text[0] || ' ',
 						text[1] || ' ',
 						' ', reset
 					].join('')
 
 					board[x * 2 + 1][y] = [
-						fgc, bgc, ' ',
+						black, bgc, ' ',
 						text[2] || ' ',
 						text[3] || ' ',
 						' ', reset
