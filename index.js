@@ -25,21 +25,18 @@ bg[2048] = `\x1b[48;5;196m`
 
 const _2048 = {
 
-	  abort: function () {
-		this.done = this.aborted = true
-		this.emit()
-		this.render()
-		this.out.write('\n')
-		this.close()
-	}
-
-	, submit: function () {
+	, hasWon: function () {
 		const c = this.board.getCells()
 		for (let x = 0; x < c.length; x++) {
 			for (let y = 0; y < c[0].length; y++) {
-				if (c[x][y] > 0) return this.bell()
+				if (c[x][y] === 2048) return true
 			}
 		}
+		return false
+	}
+
+	, submit: function () {
+		if (!this.hasWon()) return this.bell()
 
 		this.done = true
 		this.aborted = false

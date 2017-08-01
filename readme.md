@@ -12,7 +12,11 @@
 
 ```shell
 npm install -g cli-2048
-# or
+```
+
+or using [npx](https://github.com/zkat/npx#readme):
+
+```shell
 npx -p cli-2048 2048
 ```
 
@@ -20,7 +24,8 @@ npx -p cli-2048 2048
 ## Usage
 
 ```shell
-# todo
+Usage:
+	2048
 ```
 
 
