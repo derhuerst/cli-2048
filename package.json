@@ -29,7 +29,7 @@
 	"dependencies": {
 		"@derhuerst/2048": "^1.0.1",
 		"ansi-escapes": "^2.0.0",
-		"cli-styles": "^0.6.2",
+		"cli-styles": "^1.0.0",
 		"mri": "^1.1.0",
 		"prompt-skeleton": "^0.4.0"
 	},
